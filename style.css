@@ -47,7 +47,7 @@ canvas {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
-.game-over {
+.game-over, .game-modal {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -62,7 +62,18 @@ canvas {
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.6);
 }
 
-.game-over button {
+.game-modal {
+    background: rgba(30, 60, 114, 0.95);
+    display: block;
+}
+
+.game-modal h2 {
+    margin-bottom: 20px;
+    font-size: 32px;
+    color: #fff;
+}
+
+.game-over button, .game-modal button {
     margin-top: 15px;
     padding: 10px 20px;
     background: #e63946;
@@ -74,7 +85,7 @@ canvas {
     transition: background 0.3s ease;
 }
 
-.game-over button:hover {
+.game-over button:hover, .game-modal button:hover {
     background: #d62839;
 }
 

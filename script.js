@@ -16,6 +16,11 @@ let direction = 'RIGHT';
 let food = generateFood();
 let gameLoop;
 
+function startGame() {
+    document.getElementById('startModal').style.display = 'none';
+    gameLoop = setInterval(update, speed);
+}
+
 function generateFood() {
     let foodX, foodY;
     do {
@@ -26,6 +31,28 @@ function generateFood() {
 }
 
 document.addEventListener('keydown', changeDirection);
+
+// Add button controls
+document.getElementById('upBtn').addEventListener('click', () => {
+    const event = { key: 'ArrowUp' };
+    changeDirection(event);
+});
+
+document.getElementById('downBtn').addEventListener('click', () => {
+    const event = { key: 'ArrowDown' };
+    changeDirection(event);
+});
+
+document.getElementById('leftBtn').addEventListener('click', () => {
+    const event = { key: 'ArrowLeft' };
+    changeDirection(event);
+});
+
+document.getElementById('rightBtn').addEventListener('click', () => {
+    const event = { key: 'ArrowRight' };
+    changeDirection(event);
+});
+
 
 function changeDirection(event) {
     const key = event.key;
@@ -48,7 +75,7 @@ function changeDirection(event) {
 
 function drawSnake() {
     snake.forEach((segment, index) => {
-        ctx.fillStyle = index === 0 ? '#00ff88' : '#00cc66';
+        ctx.fillStyle = index === 0 ? '#f04a64' : '#ffaf3d';
         ctx.fillRect(segment.x, segment.y, box, box);
         ctx.strokeStyle = '#161b22';
         ctx.strokeRect(segment.x, segment.y, box, box);
@@ -56,7 +83,7 @@ function drawSnake() {
 }
 
 function drawFood() {
-    ctx.fillStyle = '#ff0033';
+    ctx.fillStyle = '#39e75f';
     ctx.beginPath();
     ctx.arc(food.x + box / 2, food.y + box / 2, box / 2.5, 0, Math.PI * 2);
     ctx.fill();
@@ -115,26 +142,3 @@ function update() {
     drawSnake();
     checkCollision();
 }
-
-gameLoop = setInterval(update, speed);
-
-// Add button controls
-document.getElementById('upBtn').addEventListener('click', () => {
-    const event = { key: 'ArrowUp' };
-    changeDirection(event);
-});
-
-document.getElementById('downBtn').addEventListener('click', () => {
-    const event = { key: 'ArrowDown' };
-    changeDirection(event);
-});
-
-document.getElementById('leftBtn').addEventListener('click', () => {
-    const event = { key: 'ArrowLeft' };
-    changeDirection(event);
-});
-
-document.getElementById('rightBtn').addEventListener('click', () => {
-    const event = { key: 'ArrowRight' };
-    changeDirection(event);
-});
