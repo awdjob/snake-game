@@ -15,6 +15,14 @@ body {
     overflow: hidden;
 }
 
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
 .game-container {
     position: relative;
     width: 90vw;
@@ -22,7 +30,6 @@ body {
     max-width: 600px;
     max-height: 600px;
     background: linear-gradient(135deg, #0d1117, #161b22);
-    border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
@@ -34,12 +41,8 @@ canvas {
 }
 
 .score {
-    position: absolute;
-    top: 10px;
-    left: 10px;
     background: rgba(255, 255, 255, 0.1);
     padding: 10px 15px;
-    border-radius: 5px;
     font-size: 18px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
@@ -73,4 +76,61 @@ canvas {
 
 .game-over button:hover {
     background: #d62839;
+}
+
+@media (min-width: 481px) {
+    .button-wrapper {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .button-wrapper {
+        display: flex;
+    }
+}
+
+.button-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.direction-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.direction-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.direction-btn:active {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(0.95);
+}
+
+.horizontal-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+@media (max-width: 480px) {
+    .direction-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
 }

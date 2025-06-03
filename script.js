@@ -1,8 +1,14 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
-canvas.width = canvas.height = Math.min(window.innerWidth * 0.9, 600);
 
-const box = canvas.width / 30;
+// Set a fixed box size and calculate canvas size from it
+const BOX_SIZE = 20;
+const GRID_SIZE = 30;
+canvas.width = canvas.height = BOX_SIZE * GRID_SIZE;
+
+// Update box constant to use our fixed size
+const box = BOX_SIZE;
+
 let score = 0;
 let speed = 150;
 let snake = [{ x: box * 5, y: box * 5 }];
@@ -112,6 +118,23 @@ function update() {
 
 gameLoop = setInterval(update, speed);
 
-window.addEventListener('resize', () => {
-    canvas.width = canvas.height = Math.min(window.innerWidth * 0.9, 600);
+// Add button controls
+document.getElementById('upBtn').addEventListener('click', () => {
+    const event = { key: 'ArrowUp' };
+    changeDirection(event);
+});
+
+document.getElementById('downBtn').addEventListener('click', () => {
+    const event = { key: 'ArrowDown' };
+    changeDirection(event);
+});
+
+document.getElementById('leftBtn').addEventListener('click', () => {
+    const event = { key: 'ArrowLeft' };
+    changeDirection(event);
+});
+
+document.getElementById('rightBtn').addEventListener('click', () => {
+    const event = { key: 'ArrowRight' };
+    changeDirection(event);
 });
